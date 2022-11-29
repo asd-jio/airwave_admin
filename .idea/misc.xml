@@ -3,8 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Jeyms/AdminApp/app/src/main/res/layout/activity_accountingdept.xml" value="0.18802083333333333" />
-        <entry key="..\:/Users/Jeyms/AdminApp/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/Jeyms/AdminApp/app/src/main/res/drawable/buttons.xml" value="0.196" />
+        <entry key="..\:/Users/Jeyms/AdminApp/app/src/main/res/drawable/textbox.xml" value="0.196" />
+        <entry key="..\:/Users/Jeyms/AdminApp/app/src/main/res/layout/activity_accountingdept.xml" value="0.33" />
+        <entry key="..\:/Users/Jeyms/AdminApp/app/src/main/res/layout/activity_itdept.xml" value="0.33" />
+        <entry key="..\:/Users/Jeyms/AdminApp/app/src/main/res/layout/activity_login.xml" value="0.2828282828282828" />
+        <entry key="..\:/Users/Jeyms/AdminApp/app/src/main/res/layout/activity_main.xml" value="0.5" />
+        <entry key="..\:/Users/Jeyms/AdminApp/app/src/main/res/layout/activity_others.xml" value="0.33" />
+        <entry key="..\:/Users/Jeyms/AdminApp/app/src/main/res/layout/activity_technicaldept.xml" value="0.33" />
         <entry key="..\:/Users/Jeyms/AdminApp/app/src/main/res/menu/bottom_nav.xml" value="0.36666666666666664" />
       </map>
     </option>
