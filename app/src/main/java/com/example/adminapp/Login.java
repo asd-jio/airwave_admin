@@ -39,10 +39,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         String Adminpass = logpassword.getText().toString().trim();
         switch (Adminpass) {
             case ("admin"):
-                startActivity(new Intent(this, MainActivity.class));
+                Intent intent = new Intent(Login.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+
                 break;
                 default:
                 Toast.makeText(Login.this, "Failed to login, incorrect credentials", Toast.LENGTH_LONG).show();
+
         }
 
         if(Adminpass.isEmpty()){
