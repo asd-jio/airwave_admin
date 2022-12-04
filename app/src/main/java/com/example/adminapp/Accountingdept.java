@@ -2,17 +2,16 @@ package com.example.adminapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+
+
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.adminapp.R;
-import com.example.adminapp.Users;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,63 +19,47 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class Accountingdept extends AppCompatActivity {
-
-    private Button logout;
-    private FirebaseUser user;
+    Activity context;
+    Fragment fragment;
+    Intent intent;
+    ArrayList<Messages> listMsgs;
+    Adapter myAdapter;
+    RecyclerView recyclerView;
     private DatabaseReference reference;
-
-
+    private FirebaseUser user;
     private String userID;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accountingdept);
 
-//        logout = (Button) findViewById(R.id.logoutbutton);
-//        logout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                FirebaseAuth.getInstance().signOut();
-////                startActivity(new Intent(Profile.this, MainActivity.class));
-//            }
-//        });
-//
-//        user = FirebaseAuth.getInstance().getCurrentUser();
-//        reference = FirebaseDatabase.getInstance().getReference("users");
-//        userID = user.getUid();
-//
-//        final TextView welcomeText = (TextView) findViewById(R.id.welcome);
-//        final TextView emailText = (TextView) findViewById(R.id.emailDisplay);
-//        final TextView fName = (TextView) findViewById(R.id.firstNameDisplay);
-//
-//
-//        reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//
-//                Users userProfile = snapshot.getValue(Users.class);
-//
-//                if(userProfile != null){
-//                    String email = userProfile.email;
-//                    String fullName = userProfile.fname;
-//
-//
-//                    welcomeText.setText("Welcome, " + fullName + "!");
-//                    emailText.setText(email);
-//                    fName.setText(fullName);
-//
-//
-//                }
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//                Toast.makeText(Accountingdept.this, "Error", Toast.LENGTH_LONG).show();
-//            }
-//        });
+            recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+            reference = FirebaseDatabase.getInstance().getReference("Messages/ AccountingDept");
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+
+            listMsgs = new ArrayList();
+            myAdapter = new Adapter(this, listMsgs);
+            recyclerView.setAdapter(myAdapter);
+            reference.addValueEventListener(new ValueEventListener() {
+
+                public void onDataChange(DataSnapshot snapshot) {
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+
+                        Messages msgs = dataSnapshot.getValue(Messages.class);
+                        listMsgs.add(msgs);
+                    }
+                    myAdapter.notifyDataSetChanged();
+                }
+
+                public void onCancelled(DatabaseError error) {
+                }
+            });
     }
 }
