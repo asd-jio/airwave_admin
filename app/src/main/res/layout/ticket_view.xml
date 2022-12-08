@@ -19,7 +19,7 @@
         tools:ignore="Deprecated">
 
         <TextView
-            android:id="@+id/dept_text"
+            android:id="@+id/message"
             android:layout_width="match_parent"
             android:layout_height="140dp"
             android:layout_y="15dp"
