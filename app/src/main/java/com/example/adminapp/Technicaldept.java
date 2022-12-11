@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -19,6 +20,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class Technicaldept extends AppCompatActivity {
+
+    Button buttonSub;
     Activity context;
     Fragment fragment;
     Intent intent;

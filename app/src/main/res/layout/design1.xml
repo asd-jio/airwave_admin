@@ -6,21 +6,20 @@
 	android:orientation="vertical"
 	android:background="@color/white"
 	android:layout_width="400dp"
-	android:layout_height="100dp"
+	android:layout_height="wrap_content"
 	android:layout_margin="5dp"
 	>
 
-	<Button
+	<TextView
 		android:id="@+id/subject"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
+		android:background="#2596be"
 		android:clickable="true"
 		android:gravity="start"
-		android:onClick="onClick"
 		android:padding="10dp"
 		android:text="Song"
-		android:textSize="25sp"
-		app:backgroundTint="#2596be" />
+		android:textSize="25sp" />
 
 	<TextView
 		android:id="@+id/senderNumber"
@@ -31,6 +30,12 @@
 		android:text="artis"
 		android:textSize="15sp" />
 
+	<TextView
+		android:id="@+id/messageView"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="12dp"
+		android:textSize="30dp" />
 
 
 </LinearLayout>

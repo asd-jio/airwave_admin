@@ -14,11 +14,9 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 import java.util.ArrayList;
 
-public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> implements View.OnClickListener{
+public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
     Context context;
-    Intent intent;
-
     ArrayList<Messages> msgList;
 
     public Adapter(Context context, ArrayList<Messages> msgList) {
@@ -32,11 +30,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> implemen
 
         View v = LayoutInflater.from(context).inflate(R.layout.design1, parent, false);
 
-
-        Button subButton = (Button) v.findViewById(R.id.subject);
-        subButton.setOnClickListener(this);
-
-
         return new MyViewHolder(v);
     }
 
@@ -46,6 +39,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> implemen
         Messages msgs = msgList.get(position);
         holder.subject.setText(msgs.getSubject());
         holder.senderNumber.setText(msgs.getSenderNumber());
+        holder.messageView.setText(msgs.getMessage());
 
     }
 
@@ -54,23 +48,17 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> implemen
         return msgList.size();
     }
 
-    @Override
-    public void onClick(View view) {
-        intent = new Intent(context, Inbox.class);
-        context.startActivity(intent);
-
-    }
 
     public static class MyViewHolder extends ViewHolder {
 
-        TextView senderNumber;
-        Button subject;
+        TextView senderNumber, messageView, subject;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             subject = itemView.findViewById(R.id.subject);
             senderNumber = itemView.findViewById(R.id.senderNumber);
+            messageView = itemView.findViewById(R.id.messageView);
 
 
 
