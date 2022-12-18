@@ -39,7 +39,7 @@ public class Technicaldept extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_technicaldept);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        reference = FirebaseDatabase.getInstance().getReference("Messages/ TechDept");
+        reference = FirebaseDatabase.getInstance().getReference("Tech Tickets");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

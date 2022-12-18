@@ -31,23 +31,44 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 btnlogin();
                 break;
         }
-
     }
 
     private void btnlogin() {
-
+        Intent intent;
         String Adminpass = logpassword.getText().toString().trim();
+
         switch (Adminpass) {
-            case ("admin"):
-                Intent intent = new Intent(Login.this, MainActivity.class);
+
+            case ("adminit"):
+                intent = new Intent(Login.this, Itdept.class);
                 startActivity(intent);
                 finish();
 
                 break;
+            case ("admintech"):
+                intent = new Intent(Login.this, Technicaldept.class);
+                startActivity(intent);
+                finish();
+
+                break;
+            case ("adminaccount"):
+                intent = new Intent(Login.this, Accountingdept.class);
+                startActivity(intent);
+                finish();
+
+                break;
+            case ("adminolthers"):
+                intent = new Intent(Login.this, Others.class);
+                startActivity(intent);
+                finish();
+
+                break;
+
                 default:
                 Toast.makeText(Login.this, "Failed to login, incorrect credentials", Toast.LENGTH_LONG).show();
 
         }
+
 
         if(Adminpass.isEmpty()){
             logpassword.setError("Please enter your password");
