@@ -37,7 +37,7 @@ public class Others extends AppCompatActivity {
         setContentView(R.layout.activity_others);
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        reference = FirebaseDatabase.getInstance().getReference("Messages/ Others");
+        reference = FirebaseDatabase.getInstance().getReference("Other Concerns");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

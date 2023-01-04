@@ -39,7 +39,7 @@ public class Accountingdept extends AppCompatActivity {
         setContentView(R.layout.activity_accountingdept);
 
             recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-            reference = FirebaseDatabase.getInstance().getReference("Accounting Tickets");
+            reference = FirebaseDatabase.getInstance().getReference("Accounting Department");
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

@@ -43,7 +43,7 @@ public class Itdept extends AppCompatActivity{
         setContentView(R.layout.activity_itdept);
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        reference = FirebaseDatabase.getInstance().getReference("ITDept Tickets");
+        reference = FirebaseDatabase.getInstance().getReference("IT Department");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

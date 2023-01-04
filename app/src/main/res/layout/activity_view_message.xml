@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_color3"
+    android:padding="12dp"
+    tools:context=".ViewMessage">
+
+    <AbsoluteLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/tvbackground"
+        android:padding="12dp"
+        android:text="TextView"
+        android:gravity="start"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+
+    <TextView
+        android:id="@+id/ticketNumberID"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="#ffffff"
+        android:layout_y="15dp"
+        android:paddingLeft="8dp"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="20dp" />
+
+
+        <TextView
+            android:id="@+id/tvsubject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_y="135dp"
+            android:padding="3dp"
+            android:gravity="center"
+            android:text="TextView"
+            android:textColor="@color/black"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/tvmessage"
+            android:layout_width="match_parent"
+            android:layout_height="380dp"
+            android:layout_y="190dp"
+            android:text="TextView"
+            android:padding="5dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:background="@drawable/textbox"
+            />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_y="70dp"
+            android:gravity="start"
+            android:paddingLeft="8dp"
+            android:text="TextView"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/number"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_y="50dp"
+            android:gravity="start"
+            android:paddingLeft="8dp"
+            android:text="TextView"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_y="90dp"
+            android:paddingLeft="8dp"
+            android:gravity="start"
+            android:text="TextView"
+            android:textColor="@color/black"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_y="110dp"
+            android:paddingLeft="8dp"
+            android:text="TextView"
+            android:gravity="start"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+
+
+
+        <TextView
+            android:id="@+id/key"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="start"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/category"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="start"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+        <EditText
+            android:id="@+id/response"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_y="535dp"
+            android:gravity="start"
+            android:paddingLeft="15dp"
+            android:paddingTop="10dp"
+            android:textColor="@color/black"
+            android:hint="Write a reply"
+            android:background="@drawable/textbox"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/sendButton"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_y="600dp"
+            android:background="@drawable/buttons"
+            android:text="Marked as pending"
+            android:textColor="@color/black"
+            app:backgroundTint="@color/white"
+            app:backgroundTintMode="multiply" />
+
+    </AbsoluteLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
