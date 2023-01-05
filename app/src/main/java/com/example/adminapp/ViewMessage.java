@@ -26,7 +26,7 @@ public class ViewMessage extends AppCompatActivity implements View.OnClickListen
     TextView tvTicket, tvSubject, tvMessage, tvSenderName, tvSenderNumber, tvSenderEmail, tvCategory, tvTime;
     EditText tvResponse;
     DatabaseReference reference;
-    DatabaseReference reference1;
+    DatabaseReference reference1, reference2, reference3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -113,13 +113,18 @@ public class ViewMessage extends AppCompatActivity implements View.OnClickListen
 
                 if (task.isSuccessful()){
 
-                        reference1 = FirebaseDatabase.getInstance().getReference("Delivered Tickets").child(sender);
-                        Messages messages = new Messages(subText, msgMain, sender, senderNum, email, status, key, category, response, time);
+                        reference1 = FirebaseDatabase.getInstance().getReference("Delivered Tickets").child(category+key);
+                        reference2 = FirebaseDatabase.getInstance().getReference(sender+"delivered").child("delivered"+ key);
+                        reference3 = FirebaseDatabase.getInstance().getReference(sender+"new").child("new"+key);
+
+                    Messages messages = new Messages(subText, msgMain, sender, senderNum, email, status, key, category, response, time);
 
                         reference1.setValue(messages);
+                        reference2.setValue(messages);
 
                         reference = FirebaseDatabase.getInstance().getReference("New Tickets").child(category+key);
                         reference.removeValue();
+                        reference3.removeValue();
                         Toast.makeText(ViewMessage.this, "Ticket marked as seen",  Toast.LENGTH_LONG).show();
 
 
