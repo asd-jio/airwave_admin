@@ -4,23 +4,20 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Jeyms/AdminApp/app/src/main/res/drawable/buttons.xml" value="0.196" />
+        <entry key="..\:/Users/Jeyms/AdminApp/app/src/main/res/drawable/buttons2.xml" value="0.196" />
         <entry key="..\:/Users/Jeyms/AdminApp/app/src/main/res/drawable/textbox.xml" value="0.196" />
-        <entry key="..\:/Users/Jeyms/AdminApp/app/src/main/res/layout/activity_accountingdept.xml" value="0.33" />
+        <entry key="..\:/Users/Jeyms/AdminApp/app/src/main/res/layout/activity_accountingdept.xml" value="0.22" />
+        <entry key="..\:/Users/Jeyms/AdminApp/app/src/main/res/layout/activity_completed.xml" value="0.22" />
         <entry key="..\:/Users/Jeyms/AdminApp/app/src/main/res/layout/activity_inbox.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/Jeyms/AdminApp/app/src/main/res/layout/activity_itdept.xml" value="0.22" />
         <entry key="..\:/Users/Jeyms/AdminApp/app/src/main/res/layout/activity_login.xml" value="0.18" />
         <entry key="..\:/Users/Jeyms/AdminApp/app/src/main/res/layout/activity_main.xml" value="0.5" />
-        <entry key="..\:/Users/Jeyms/AdminApp/app/src/main/res/layout/activity_others.xml" value="0.33" />
-        <entry key="..\:/Users/Jeyms/AdminApp/app/src/main/res/layout/activity_technicaldept.xml" value="0.33" />
-        <entry key="..\:/Users/Jeyms/AdminApp/app/src/main/res/layout/design1.xml" value="0.18" />
+        <entry key="..\:/Users/Jeyms/AdminApp/app/src/main/res/layout/activity_others.xml" value="0.2" />
+        <entry key="..\:/Users/Jeyms/AdminApp/app/src/main/res/layout/activity_technicaldept.xml" value="0.22" />
+        <entry key="..\:/Users/Jeyms/AdminApp/app/src/main/res/layout/activity_view_message.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Jeyms/AdminApp/app/src/main/res/layout/design1.xml" value="0.33" />
         <entry key="..\:/Users/Jeyms/AdminApp/app/src/main/res/layout/ticket_view.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/Jeyms/AdminApp/app/src/main/res/menu/bottom_nav.xml" value="0.36666666666666664" />
-        <entry key="..\:/admin/airwave_admin/app/src/main/res/drawable/buttons.xml" value="0.188" />
-        <entry key="..\:/admin/airwave_admin/app/src/main/res/drawable/textbox.xml" value="0.188" />
-        <entry key="..\:/admin/airwave_admin/app/src/main/res/drawable/tvbackground.xml" value="0.188" />
-        <entry key="..\:/admin/airwave_admin/app/src/main/res/layout/activity_login.xml" value="0.16847826086956522" />
-        <entry key="..\:/admin/airwave_admin/app/src/main/res/layout/activity_view_message.xml" value="0.4091858037578288" />
-        <entry key="..\:/admin/airwave_admin/app/src/main/res/layout/design1.xml" value="0.1" />
       </map>
     </option>
   </component>

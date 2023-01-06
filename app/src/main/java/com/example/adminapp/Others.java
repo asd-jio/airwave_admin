@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -29,6 +31,7 @@ public class Others extends AppCompatActivity {
     private DatabaseReference reference;
     private FirebaseUser user;
     private String userID;
+    Button viewcomplete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,20 @@ public class Others extends AppCompatActivity {
         reference = FirebaseDatabase.getInstance().getReference("Other Concerns");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        viewcomplete = findViewById(R.id.completedTickets);
+        viewcomplete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switch (view.getId()) {
+                    case R.id.completedTickets:
+                        intent = new Intent(Others.this, Completed.class);
+                        startActivity(intent);
+
+                        break;
+                }
+            }
+        });
 
 
         listMsgs = new ArrayList();

@@ -5,15 +5,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-
 
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -22,10 +18,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-
 import java.util.ArrayList;
 
-public class Itdept extends AppCompatActivity{
+public class Completed extends AppCompatActivity {
     Activity context;
     Fragment fragment;
     Intent intent;
@@ -41,26 +36,11 @@ public class Itdept extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
-        setContentView(R.layout.activity_itdept);
-
+        setContentView(R.layout.activity_completed);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        reference = FirebaseDatabase.getInstance().getReference("IT Department");
+        reference = FirebaseDatabase.getInstance().getReference("Completed Tickets");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        viewcomplete = findViewById(R.id.completedTickets);
-        viewcomplete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switch (view.getId()) {
-                    case R.id.completedTickets:
-                        intent = new Intent(Itdept.this, Completed.class);
-                        startActivity(intent);
-
-                        break;
-                }
-            }
-        });
 
 
         listMsgs = new ArrayList();
@@ -80,11 +60,5 @@ public class Itdept extends AppCompatActivity{
             public void onCancelled(DatabaseError error) {
             }
         });
-
-
-
     }
-
-
 }
-

@@ -143,15 +143,28 @@
             android:textSize="15sp" />
 
         <Button
-            android:id="@+id/sendButton"
-            android:layout_width="match_parent"
+            android:id="@+id/toDeliver"
+            android:layout_width="150dp"
             android:layout_height="40dp"
             android:layout_y="600dp"
-            android:background="@drawable/buttons"
-            android:text="Marked as pending"
-            android:textColor="@color/black"
+            android:layout_x="15dp"
+            android:background="@drawable/buttons2"
+            android:text="Pending"
+            android:textColor="@color/white"
             app:backgroundTint="@color/white"
             app:backgroundTintMode="multiply" />
+        <Button
+            android:id="@+id/toFinish"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_y="600dp"
+            android:layout_x="190dp"
+            android:background="@drawable/buttons2"
+            android:text="Completed"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/white"
+            app:backgroundTintMode="multiply" />
+
 
     </AbsoluteLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

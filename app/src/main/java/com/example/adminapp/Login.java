@@ -39,25 +39,25 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         switch (Adminpass) {
 
-            case ("adminit"):
+            case ("awitdept"):
                 intent = new Intent(Login.this, Itdept.class);
                 startActivity(intent);
                 finish();
 
                 break;
-            case ("admintech"):
+            case ("awtech"):
                 intent = new Intent(Login.this, Technicaldept.class);
                 startActivity(intent);
                 finish();
 
                 break;
-            case ("adminaccount"):
+            case ("awaccount"):
                 intent = new Intent(Login.this, Accountingdept.class);
                 startActivity(intent);
                 finish();
 
                 break;
-            case ("adminolthers"):
+            case ("others"):
                 intent = new Intent(Login.this, Others.class);
                 startActivity(intent);
                 finish();

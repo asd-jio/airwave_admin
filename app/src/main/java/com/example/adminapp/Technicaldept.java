@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseUser;
@@ -31,6 +32,7 @@ public class Technicaldept extends AppCompatActivity {
     private DatabaseReference reference;
     private FirebaseUser user;
     private String userID;
+    Button viewcomplete;
 
 
     @Override
@@ -44,11 +46,25 @@ public class Technicaldept extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
+        viewcomplete = findViewById(R.id.completedTickets);
+        viewcomplete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switch (view.getId()) {
+                    case R.id.completedTickets:
+                        intent = new Intent(Technicaldept.this, Completed.class);
+                        startActivity(intent);
+
+                        break;
+                }
+            }
+        });
+
+
         listMsgs = new ArrayList();
         myAdapter = new Adapter(this, listMsgs);
         recyclerView.setAdapter(myAdapter);
         reference.addValueEventListener(new ValueEventListener() {
-
 
             public void onDataChange(DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
