@@ -211,11 +211,12 @@ public class ViewMessage extends AppCompatActivity implements View.OnClickListen
                     public void onComplete(@NonNull Task task) {
 
                         if (task.isSuccessful()){
-
+                            reference3 = FirebaseDatabase.getInstance().getReference(sender+"completed").child("completed" + key);
                             reference1 = FirebaseDatabase.getInstance().getReference("Completed Tickets").child(category+key);
                             Messages messages = new Messages(subText, msgMain, sender, senderNum, email, status, key, category, response, time, image1, image2, image3);
 
                             reference1.setValue(messages);
+                            reference3.setValue(messages);
 
                             reference = FirebaseDatabase.getInstance().getReference("Delivered Tickets").child(category+key);
                             reference2 = FirebaseDatabase.getInstance().getReference(category).child(category+key);
@@ -232,8 +233,6 @@ public class ViewMessage extends AppCompatActivity implements View.OnClickListen
 
                     }
                 });
-                Intent intent = new Intent(ViewMessage.this, Itdept.class);
-                startActivity(intent);
                 finish();
             }
         });
