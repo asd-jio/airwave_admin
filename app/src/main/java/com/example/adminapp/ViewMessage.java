@@ -1,10 +1,14 @@
 package com.example.adminapp;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,10 +16,17 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
+
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 
 
@@ -23,11 +34,17 @@ public class ViewMessage extends AppCompatActivity implements View.OnClickListen
 
 
     Button send, send2;
-    TextView tvTicket, tvSubject, tvMessage, tvSenderName, tvSenderNumber, tvSenderEmail, tvCategory, tvTime, tvStatus;
+    TextView tvTicket, tvSubject, tvMessage, tvSenderName, tvSenderNumber, tvSenderEmail,
+            tvCategory, tvTime, tvStatus, tvImage1, tvImage2, tvImage3;
+    ImageView imageView1, imageView2, imageView3;
     EditText tvResponse;
     Button theButton;
     DatabaseReference reference;
     DatabaseReference reference1, reference2, reference3;
+
+    private StorageReference storageReference;
+    private FirebaseStorage storage = FirebaseStorage.getInstance();
+    private Uri imageUri, imageUri2, imageUri3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +65,69 @@ public class ViewMessage extends AppCompatActivity implements View.OnClickListen
         String intentCategory = intent.getStringExtra("categoryID");
         String intentResponse = intent.getStringExtra("responseID");
         String intentTime = intent.getStringExtra("timeID");
+        String intentImage1 = intent.getStringExtra("image1ID");
+        String intentImage2 = intent.getStringExtra("image2ID");
+        String intentImage3 = intent.getStringExtra("image3ID");
+
+        System.out.println(intentImage1);
+        System.out.println(intentImage2);
+        System.out.println(intentImage3);
+
+        imageView1 = (ImageView)findViewById(R.id.addImage1);
+        imageView2 = (ImageView)findViewById(R.id.addImage2);
+        imageView3 = (ImageView)findViewById(R.id.addImage3);
+
+        if(intentImage1 != null) {
+            storageReference = storage.getReferenceFromUrl("gs://loginwithauth-20b07.appspot.com/").child("images/" + intentImage1);
+            try {
+                final File file1 = File.createTempFile("image", "jpg");
+                storageReference.getFile(file1).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                        Bitmap bitmap1 = BitmapFactory.decodeFile(file1.getAbsolutePath());
+                        imageView1.setImageBitmap(bitmap1);
+
+                    }
+                });
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        if(intentImage2 != null) {
+            storageReference = storage.getReferenceFromUrl("gs://loginwithauth-20b07.appspot.com/").child("images/" + intentImage2);
+            try {
+                final File file2 = File.createTempFile("image", "jpg");
+                storageReference.getFile(file2).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                        Bitmap bitmap2 = BitmapFactory.decodeFile(file2.getAbsolutePath());
+                        imageView2.setImageBitmap(bitmap2);
+
+                    }
+                });
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+        if(intentImage3 != null) {
+            storageReference = storage.getReferenceFromUrl("gs://loginwithauth-20b07.appspot.com/").child("images/" + intentImage3);
+            try {
+                final File file3 = File.createTempFile("image", "jpg");
+                storageReference.getFile(file3).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                        Bitmap bitmap3 = BitmapFactory.decodeFile(file3.getAbsolutePath());
+                        imageView3.setImageBitmap(bitmap3);
+
+                    }
+                });
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
 
 
@@ -63,6 +143,10 @@ public class ViewMessage extends AppCompatActivity implements View.OnClickListen
         tvResponse = (EditText) findViewById(R.id.response);
         tvTime = (TextView) findViewById(R.id.time);
         tvStatus = (TextView) findViewById(R.id.status);
+        tvImage1 = (TextView) findViewById(R.id.image1);
+        tvImage2 = (TextView) findViewById(R.id.image2);
+        tvImage3 = (TextView) findViewById(R.id.image3);
+
 
         send = (Button) findViewById(R.id.toDeliver);
         send.setOnClickListener(this);
@@ -75,6 +159,11 @@ public class ViewMessage extends AppCompatActivity implements View.OnClickListen
         tvSenderEmail.setText(intentEmail);
         tvCategory.setText(intentCategory);
         tvTime.setText(intentTime);
+        tvImage1.setText(intentImage1);
+        tvImage2.setText(intentImage2);
+        tvImage3.setText(intentImage3);
+
+
 
         send2 = (Button)  findViewById(R.id.toFinish);
         send2.setOnClickListener(new View.OnClickListener() {
@@ -91,13 +180,19 @@ public class ViewMessage extends AppCompatActivity implements View.OnClickListen
                 String category = tvCategory.getText().toString();
                 String response = tvResponse.getText().toString();
                 String time = tvTime.getText().toString();
+                String image1 = tvImage1.getText().toString();
+                String image2 = tvImage2.getText().toString();
+                String image3 = tvImage3.getText().toString();
 
-                completestatus(subText, msgMain, sender, senderNum, email, status, key, category, response, time);
+
+
+                completestatus(subText, msgMain, sender, senderNum, email, status, key, category, response, time, image1, image2, image3);
 
 
             }
 
-            private void completestatus(String subText, String msgMain, String sender, String senderNum, String email, String status, String key, String category, String response, String time) {
+            private void completestatus(String subText, String msgMain, String sender, String senderNum, String email, String status,
+                                        String key, String category, String response, String time, String image1, String image2, String image3) {
                 HashMap messages = new HashMap();
 
 
@@ -118,7 +213,7 @@ public class ViewMessage extends AppCompatActivity implements View.OnClickListen
                         if (task.isSuccessful()){
 
                             reference1 = FirebaseDatabase.getInstance().getReference("Completed Tickets").child(category+key);
-                            Messages messages = new Messages(subText, msgMain, sender, senderNum, email, status, key, category, response, time);
+                            Messages messages = new Messages(subText, msgMain, sender, senderNum, email, status, key, category, response, time, image1, image2, image3);
 
                             reference1.setValue(messages);
 
@@ -151,17 +246,21 @@ public class ViewMessage extends AppCompatActivity implements View.OnClickListen
         String sender = tvSenderName.getText().toString();
         String senderNum = tvSenderNumber.getText().toString();
         String email = tvSenderEmail.getText().toString();
-        String status = "delivered";
+        String status = "Pending";
         String key = tvTicket.getText().toString();
         String category = tvCategory.getText().toString();
         String response = tvResponse.getText().toString();
         String time = tvTime.getText().toString();
+        String image1 = tvImage1.getText().toString();
+        String image2 = tvImage2.getText().toString();
+        String image3 = tvImage3.getText().toString();
 
-        updateData(subText, msgMain, sender, senderNum, email, status, key, category, response, time);
+
+        updateData(subText, msgMain, sender, senderNum, email, status, key, category, response, time, image1, image2, image3);
 
     }
 
-    private void updateData(String subText, String msgMain, String sender, String senderNum, String email, String status, String key, String category, String response, String time) {
+    private void updateData(String subText, String msgMain, String sender, String senderNum, String email, String status, String key, String category, String response, String time, String image1, String image2, String image3) {
 
         HashMap messages = new HashMap();
 
@@ -184,7 +283,7 @@ public class ViewMessage extends AppCompatActivity implements View.OnClickListen
                 if (task.isSuccessful()){
 
                         reference1 = FirebaseDatabase.getInstance().getReference("Delivered Tickets").child(category+key);
-                        Messages messages = new Messages(subText, msgMain, sender, senderNum, email, status, key, category, response, time);
+                        Messages messages = new Messages(subText, msgMain, sender, senderNum, email, status, key, category, response, time, image1, image2, image3);
                         reference3 = FirebaseDatabase.getInstance().getReference(sender+"delivered").child(category+key);
 
 
