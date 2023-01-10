@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -52,9 +53,9 @@ public class ViewMessage extends AppCompatActivity implements View.OnClickListen
         getSupportActionBar().hide();
         setContentView(R.layout.activity_view_message);
 
+        FirebaseMessaging.getInstance().subscribeToTopic("all");
+
         Intent intent = getIntent();
-
-
 
         String intentKey = intent.getStringExtra("keyID");
         String intentSubject = intent.getStringExtra("subjectID");
@@ -255,6 +256,10 @@ reference4.removeValue();
         String image1 = tvImage1.getText().toString();
         String image2 = tvImage2.getText().toString();
         String image3 = tvImage3.getText().toString();
+
+
+        FcmNotificationsSender notificationsSender = new FcmNotificationsSender("/topics/all", "AirwavePH", "Your ticket is Pending",getApplicationContext(), ViewMessage.this);
+        notificationsSender.SendNotifications();
 
 
         updateData(subText, msgMain, sender, senderNum, email, status, key, category, response, time, image1, image2, image3);
