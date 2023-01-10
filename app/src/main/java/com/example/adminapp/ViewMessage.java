@@ -40,7 +40,7 @@ public class ViewMessage extends AppCompatActivity implements View.OnClickListen
     EditText tvResponse;
     Button theButton;
     DatabaseReference reference;
-    DatabaseReference reference1, reference2, reference3;
+    DatabaseReference reference1, reference2, reference3, reference4;
 
     private StorageReference storageReference;
     private FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -142,7 +142,7 @@ public class ViewMessage extends AppCompatActivity implements View.OnClickListen
         tvCategory = (TextView) findViewById(R.id.category);
         tvResponse = (EditText) findViewById(R.id.response);
         tvTime = (TextView) findViewById(R.id.time);
-        tvStatus = (TextView) findViewById(R.id.status);
+        tvStatus = (TextView) findViewById(R.id.status1);
         tvImage1 = (TextView) findViewById(R.id.image1);
         tvImage2 = (TextView) findViewById(R.id.image2);
         tvImage3 = (TextView) findViewById(R.id.image3);
@@ -175,7 +175,7 @@ public class ViewMessage extends AppCompatActivity implements View.OnClickListen
                 String sender = tvSenderName.getText().toString();
                 String senderNum = tvSenderNumber.getText().toString();
                 String email = tvSenderEmail.getText().toString();
-                String status = "Completed";
+                String status = "COMPLETED";
                 String key = tvTicket.getText().toString();
                 String category = tvCategory.getText().toString();
                 String response = tvResponse.getText().toString();
@@ -220,6 +220,8 @@ public class ViewMessage extends AppCompatActivity implements View.OnClickListen
 
                             reference = FirebaseDatabase.getInstance().getReference("Delivered Tickets").child(category+key);
                             reference2 = FirebaseDatabase.getInstance().getReference(category).child(category+key);
+                            reference4 = FirebaseDatabase.getInstance().getReference(sender+"delivered").child(category + key);
+reference4.removeValue();
                             reference2.removeValue();
                             reference.removeValue();
                             Toast.makeText(ViewMessage.this, "Ticket Completed",  Toast.LENGTH_LONG).show();
@@ -245,7 +247,7 @@ public class ViewMessage extends AppCompatActivity implements View.OnClickListen
         String sender = tvSenderName.getText().toString();
         String senderNum = tvSenderNumber.getText().toString();
         String email = tvSenderEmail.getText().toString();
-        String status = "Pending";
+        String status = "PENDING";
         String key = tvTicket.getText().toString();
         String category = tvCategory.getText().toString();
         String response = tvResponse.getText().toString();

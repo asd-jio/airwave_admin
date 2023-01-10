@@ -2,6 +2,7 @@ package com.example.adminapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     private ArrayList<Messages> msgList;
 
 
+
+
     public Adapter(Context context, ArrayList<Messages> msgList) {
         this.context = context;
         this.msgList = msgList;
@@ -29,9 +32,13 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
+
+
         View v = LayoutInflater.from(context).inflate(R.layout.design1, parent, false);
 
+
         return new MyViewHolder(v);
+
     }
 
     @Override
@@ -51,6 +58,18 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
         holder.image1.setText(messages.getImage1());
         holder.image2.setText(messages.getImage2());
         holder.image3.setText(messages.getImage3());
+
+        switch (holder.status.getText().toString()){
+            case("QUEUED"):
+                holder.status.setBackgroundColor(Color.parseColor("#e9f542"));
+                break;
+            case ("PENDING"):
+                holder.status.setBackgroundColor(Color.parseColor("#f079f2"));
+                break;
+            case ("COMPLETED"):
+                holder.status.setBackgroundColor(Color.parseColor("#5df567"));
+                break;
+        }
 
 
 
@@ -88,6 +107,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
                 intent.putExtra("image2ID", image2);
                 intent.putExtra("image3ID", image3);
 
+
                 context.startActivity(intent);
                 System.out.println(key);
             }
@@ -103,10 +123,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
     public static class MyViewHolder extends ViewHolder {
 
-
-        Button subject;
         TextView key, message, number, name, email, status,
                 category, response, time, image1, image2, image3;
+        Button subject;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -116,7 +136,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
             number = itemView.findViewById(R.id.number);
             name = itemView.findViewById(R.id.name);
             email = itemView.findViewById(R.id.email);
-            status = itemView.findViewById(R.id.status);
+            status = itemView.findViewById(R.id.status1);
             category = itemView.findViewById(R.id.category);
             response = itemView.findViewById(R.id.response);
             time = itemView.findViewById(R.id.date);
@@ -125,7 +145,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
             image3 = itemView.findViewById(R.id.image3);
 
 
-
+//            if (status.getText()=="queued") {
+//                status.setBackgroundColor(Color.parseColor("#dfff80"));
+//            }
+//            if (status.getText()=="delivered") {
+//                status.setBackgroundColor(Color.parseColor("#1282b3"));
+//            }
+//            if (status.getText()=="Completed") {
+//                status.setBackgroundColor(Color.parseColor("#99e699"));
+//            }
         }
     }
 
